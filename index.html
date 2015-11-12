@@ -89,7 +89,7 @@ function runit() {
    Sk.configure({read:builtinRead}); 
    (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
    var myPromise = Sk.misceval.asyncToPromise(function() {
-       return Sk.importMainWithBody(false, demo, true);
+       return Sk.importMainWithBody("<stdin>", false, demo, true);
    });
    myPromise.then(function(mod) {},
        function(err) {
