@@ -64,14 +64,17 @@
 
 <script type="text/javascript"> 
 
+var demo;
+
 function loadDemo() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      console.log(xhttp.responseText);
+      demo = xhttp.responseText
+      console.log(demo);
     }
   };
-  xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/main.py", true);
+  xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/demo.py", true);
   xhttp.send();
 }
 // output functions are configurable.  This one just appends some text
