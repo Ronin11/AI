@@ -80,11 +80,11 @@ function builtinRead(x) {
 // call Sk.importMainWithBody()
 function runit() { 
    var prog = document.createTextNode(
-     "import turtle
-
-      t = turtle.Turtle()
-      t.forward(100)
-
+     "import turtle \
+     \
+      t = turtle.Turtle() \
+      t.forward(100) \
+      \
       print \"Hello World\" "
       );
    var mypre = document.getElementById("output"); 
