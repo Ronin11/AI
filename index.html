@@ -45,7 +45,7 @@
     <li>Random Forest Price Predictor</li>
     <li>Neural Net Price Predictor</li>
     <li>Trade Indicator</li>
-    <li>Trader</li>li>
+    <li>Trader</li>
   </ul>
   The Random Forest Price Predictor, and Neural Net Price Predictor will try to predict the next interval price(on whatever interval proves to be the most effecient in trading.) These outputs will be given to the Trade Tndicator, along with the stock data given to the predictors. The Trade Indicator will then output a value of -1 to 1. These values will indicate that a stock will increase or decrease(hopefully). The Trade Indicator will be using a neural net for prediction, and a reinforcement learning algorithm to try and fine tune the output value.<br>
   The Trader will take the inputs of the stock data, the price predictors, and Trade Indicator, and sort the data by what it thinks will have the biggest change. For example if it thinks a stock will drop 50% it will appear above a stock it thinks will increase 40%. It will then take N stocks from the top of this list, and then trade on them. Buying the stocks that will increase, and shorting the ones that will decrease. This will be another neural net, with reinforcement. This reinforcement is soley on the returns of its trades. Positive for making money, negative for losing money.<br>
