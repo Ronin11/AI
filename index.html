@@ -71,7 +71,6 @@ function loadDemo() {
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       demo = xhttp.responseText
-      console.log(demo);
     }
   };
   xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/demo.py", true);
@@ -95,7 +94,6 @@ function builtinRead(x) {
 // call Sk.importMainWithBody()
 function runit() {
    loadDemo();
-   var prog = document.getElementById("yourcode").value; 
    var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
    Sk.pre = "output";
@@ -104,28 +102,18 @@ function runit() {
    var myPromise = Sk.misceval.asyncToPromise(function() {
        return Sk.importMainWithBody("<stdin>", false, demo, true);
    });
-   myPromise.then(function(mod) {
-       console.log('success');
-   },
+   myPromise.then(function(mod) {},
        function(err) {
        console.log(err.toString());
    });
 } 
 </script> 
-<form> 
-<textarea id="yourcode" cols="40" rows="10">import turtle
-
-t = turtle.Turtle()
-t.forward(100)
-
-print "Hello World" 
-</textarea><br /> 
-<button type="button" onclick="runit()">Run</button> 
+<form>
+<button type="button" onclick="runit()">Run Demo</button> 
 </form> 
 <pre id="output" ></pre> 
 <!-- If you want turtle graphics include a canvas -->
 <div id="mycanvas"></div> 
-
 </p>
 
 
