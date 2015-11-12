@@ -63,6 +63,17 @@
 
 
 <script type="text/javascript"> 
+
+function loadDemo() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      console.log(xhttp.responseText);
+    }
+  };
+  xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/main.py", true);
+  xhttp.send();
+}
 // output functions are configurable.  This one just appends some text
 // to a pre element.
 function outf(text) { 
@@ -79,7 +90,8 @@ function builtinRead(x) {
 // get a reference to your pre element for output
 // configure the output function
 // call Sk.importMainWithBody()
-function runit() { 
+function runit() {
+   loadDemo();
    var prog = document.getElementById("yourcode").value; 
    var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
