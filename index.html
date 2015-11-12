@@ -3,6 +3,9 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script> 
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script> 
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script> 
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
@@ -29,7 +32,7 @@
     <div class="container">
       <section id="main_content">
         <h3>
-<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction:</h3>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h3>
 
 <p>
   This project is an attempt for me to evolve from being a poor college kid into a wealthy man. In all reality if this works, this page will probably be taken down. So if you read this and can't find it later, I'm probably living the good life.<br> 
@@ -52,6 +55,66 @@
 
   Obviously this system is only taking into account the market fluctuations and speculations. This does not take into account news or other outside sources. Theoretically it should be able to see these reactions and predict their outcomes reasonably quickly, hopefully reducing the amount of risk these events produce.
 </p>
+
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p>
+
+
+<script type="text/javascript"> 
+// output functions are configurable.  This one just appends some text
+// to a pre element.
+function outf(text) { 
+    var mypre = document.getElementById("output"); 
+    mypre.innerHTML = mypre.innerHTML + text; 
+} 
+function builtinRead(x) {
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+            throw "File not found: '" + x + "'";
+    return Sk.builtinFiles["files"][x];
+}
+// Here's everything you need to run a python program in skulpt
+// grab the code from your textarea
+// get a reference to your pre element for output
+// configure the output function
+// call Sk.importMainWithBody()
+function runit() { 
+   var prog = document.getElementById("yourcode").value; 
+   var mypre = document.getElementById("output"); 
+   mypre.innerHTML = ''; 
+   Sk.pre = "output";
+   Sk.configure({output:outf, read:builtinRead}); 
+   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+   var myPromise = Sk.misceval.asyncToPromise(function() {
+       return Sk.importMainWithBody("<stdin>", false, prog, true);
+   });
+   myPromise.then(function(mod) {
+       console.log('success');
+   },
+       function(err) {
+       console.log(err.toString());
+   });
+} 
+</script> 
+
+<h3>Try This</h3> 
+<form> 
+<textarea id="yourcode" cols="40" rows="10">import turtle
+
+t = turtle.Turtle()
+t.forward(100)
+
+print "Hello World" 
+</textarea><br /> 
+<button type="button" onclick="runit()">Run</button> 
+</form> 
+<pre id="output" ></pre> 
+<!-- If you want turtle graphics include a canvas -->
+<div id="mycanvas"></div> 
+
+</p>
+
+
 
 <h3>
 <a id="why-penny-stocks" class="anchor" href="#why-penny-stocks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why Penny Stocks?</h3>
