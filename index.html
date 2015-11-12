@@ -79,7 +79,13 @@ function builtinRead(x) {
 // configure the output function
 // call Sk.importMainWithBody()
 function runit() { 
-   var prog = document.getElementById("yourcode").value; 
+   var prog = 
+   "import turtle
+
+    t = turtle.Turtle()
+    t.forward(100)
+
+    print \"Hello World\" "; 
    var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
    Sk.pre = "output";
@@ -96,16 +102,7 @@ function runit() {
    });
 } 
 </script> 
-
-<h3>Try This</h3> 
 <form> 
-<textarea id="yourcode" cols="40" rows="10">import turtle
-
-t = turtle.Turtle()
-t.forward(100)
-
-print "Hello World" 
-</textarea><br /> 
 <button type="button" onclick="runit()">Run</button> 
 </form> 
 <pre id="output" ></pre> 
