@@ -56,6 +56,7 @@
   Obviously this system is only taking into account the market fluctuations and speculations. This does not take into account news or other outside sources. Theoretically it should be able to see these reactions and predict their outcomes reasonably quickly, hopefully reducing the amount of risk these events produce.
 </p>
 
+<h3>
 <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
 
 <p>
@@ -79,14 +80,7 @@ function builtinRead(x) {
 // configure the output function
 // call Sk.importMainWithBody()
 function runit() { 
-   var prog = document.createTextNode(
-     "import turtle \
-     \
-      t = turtle.Turtle() \
-      t.forward(100) \
-      \
-      print \"Hello World\" "
-      );
+   var prog = document.getElementById("yourcode").value; 
    var mypre = document.getElementById("output"); 
    mypre.innerHTML = ''; 
    Sk.pre = "output";
@@ -104,6 +98,13 @@ function runit() {
 } 
 </script> 
 <form> 
+<textarea id="yourcode" cols="40" rows="10">import turtle
+
+t = turtle.Turtle()
+t.forward(100)
+
+print "Hello World" 
+</textarea><br /> 
 <button type="button" onclick="runit()">Run</button> 
 </form> 
 <pre id="output" ></pre> 
