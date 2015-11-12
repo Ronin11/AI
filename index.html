@@ -59,9 +59,6 @@
 <h3>
 <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
 
-<p>
-
-
 <script type="text/javascript"> 
 
 var demo;
@@ -76,12 +73,7 @@ function loadDemo() {
   xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/demo.py", true);
   xhttp.send();
 }
-// output functions are configurable.  This one just appends some text
-// to a pre element.
-function outf(text) { 
-    //var mypre = document.getElementById("output"); 
-    //mypre.innerHTML = mypre.innerHTML + text; 
-} 
+
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
             throw "File not found: '" + x + "'";
@@ -94,13 +86,10 @@ function builtinRead(x) {
 // call Sk.importMainWithBody()
 function runit() {
    loadDemo();
-   //var mypre = document.getElementById("output"); 
-   //mypre.innerHTML = ''; 
-   //Sk.pre = "output";
    Sk.configure({read:builtinRead}); 
    (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
    var myPromise = Sk.misceval.asyncToPromise(function() {
-       return Sk.importMainWithBody("<stdin>", false, demo, true);
+       return Sk.importMainWithBody(false, demo, true);
    });
    myPromise.then(function(mod) {},
        function(err) {
@@ -111,11 +100,8 @@ function runit() {
 <form>
 <button type="button" onclick="runit()">Run Demo</button> 
 </form> 
-<!-- <pre id="output" ></pre> 
-<!-- If you want turtle graphics include a canvas -->
-<div id="mycanvas"></div> 
-</p>
 
+<div id="mycanvas"></div> 
 
 
 <h3>
