@@ -2,7 +2,6 @@ $(document).ready(function () {
 
 	$.get("https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?", function(data){
 		data = JSON.parse(removeComments(data));
-		console.log(data);
 		// Create the chart
 		$('#demo').highcharts('StockChart', {
 
