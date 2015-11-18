@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).load(function () {
 	console.log('This would be the main JS file.');
 });
 
