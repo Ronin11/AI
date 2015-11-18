@@ -5,7 +5,7 @@ $(document).ready(function () {
   		console.log("callback");
   		console.log(JSON.parse(data));
 	});
-	//data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
+	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
 	//console.log(data);
 	//console.log(Object.keys(data));
 	//console.log(JSON.parse(JSON.stringify(data)));
