@@ -2,11 +2,12 @@ $(document).ready(function () {
 
 	//data = JSON.parse($.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json').recievedtext);
 	$.get("https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?", function(data){
+  		console.log("callback");
   		console.log(data);
 	});
 	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
 	console.log(data);
-	console.log(Object.keys(data));
+	//console.log(Object.keys(data));
 	console.log(JSON.parse(JSON.stringify(data)));
 	//if(data.readyState == 1)
 	//	console.log(data.responseText);
