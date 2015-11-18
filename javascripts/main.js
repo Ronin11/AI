@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
-
+	console.log(data);
 	// Create the chart
 	$('#container').highcharts('StockChart', {
 
@@ -10,11 +10,11 @@ $(document).ready(function () {
 		},
 
 		title : {
-			text : 'AAPL Stock Price'
+			text : 'AI Account Value'
 		},
 
 		series : [{
-			name : 'AAPL',
+			name : 'Value',
 			data : data,
 			tooltip: {
 				valueDecimals: 2
