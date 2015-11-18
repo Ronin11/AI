@@ -12,14 +12,14 @@ function loadDemo() {
 }
 
 $(document).ready(function () {
-		loadDemo();
-		console.log(results);
+		//loadDemo();
+		//console.log(results);
 		myArray = $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?');//['response.JSON']
-
+		console.log(myArray);
 		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
         // Create the chart
         $('#demo').highcharts('StockChart', {
-
+        	console.log(data);
 
             rangeSelector : {
                 selected : 1
