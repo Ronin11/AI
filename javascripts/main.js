@@ -13,7 +13,8 @@ $(document).ready(function () {
 	//console.log(JSON.parse(JSON.stringify(data)));
 	//if(data.readyState == 1)
 	//	console.log(data.responseText);
-	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (temp) {
+	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+		console.log(data);
 		// Create the chart
 		$('#container').highcharts('StockChart', {
 
@@ -37,6 +38,7 @@ $(document).ready(function () {
 
 	$.get("https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?", function(data){
 		data = removeComments(data);
+		data.log(data);
 		// Create the chart
 		$('#demo').highcharts('StockChart', {
 
