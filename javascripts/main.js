@@ -13,6 +13,7 @@ function loadDemo() {
 
 $(document).ready(function () {
 		loadDemo();
+		console.log(results);
 		// Create the chart
 		$('#demo').highcharts('StockChart', {
 
