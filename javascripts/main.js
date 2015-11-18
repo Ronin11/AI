@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
 	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
-	console.log(data)
+	console.log(data);
 	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (temp) {
 		console.log(temp)
-	}
+	});
 	// Create the chart
 	$('#container').highcharts('StockChart', {
 
