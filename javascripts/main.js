@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
 	//data = JSON.parse($.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json').recievedtext);
-	$.get("https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?", function(data){
+	$.getJSON("https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?", function(data){
   		console.log(data);
 	});
 	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
 	console.log(data);
-	console.log(data.readyState.readyState);
+	console.log(data.keys);
 	if(data.readyState == 1)
 		console.log(data.responseText);
 	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (temp) {
