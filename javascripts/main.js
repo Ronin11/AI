@@ -7,7 +7,7 @@ function loadDemo() {
 		results = xhttp.responseText
 		}
 	};
-	xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/data/data.js", true);
+	xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/data/data.txt", true);
 	xhttp.send();
 }
 
