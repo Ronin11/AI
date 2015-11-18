@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.txt', function (data) {
+    $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json', function (data) {
         console.log(data);
         // Create the chart
         $('#container').highcharts('StockChart', {
