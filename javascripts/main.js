@@ -54,21 +54,21 @@ function removeComments(str) {
     for (var i = 0, l = str.length; i < l; i++) {
  
         if (mode.regex) {
-            if (str[i] === '/' && str[i-1] !== '\') {
+            if (str[i] === '/' && str[i-1] !== '\\') {
                 mode.regex = false;
             }
             continue;
         }
  
         if (mode.singleQuote) {
-            if (str[i] === "'" && str[i-1] !== '\') {
+            if (str[i] === "'" && str[i-1] !== '\\') {
                 mode.singleQuote = false;
             }
             continue;
         }
  
         if (mode.doubleQuote) {
-            if (str[i] === '"' && str[i-1] !== '\') {
+            if (str[i] === '"' && str[i-1] !== '\\') {
                 mode.doubleQuote = false;
             }
             continue;
