@@ -18,8 +18,8 @@ $(document).ready(function () {
 		console.log(myArray);
 		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
         // Create the chart
+        console.log(data);
         $('#demo').highcharts('StockChart', {
-        	console.log(data);
 
             rangeSelector : {
                 selected : 1
