@@ -1,32 +1,26 @@
 $(document).ready(function () {
 
-    //$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-    data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
-    console.log(data);
-    $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json', function (data) {
-        console.log(data);
-        // Create the chart
-        $('#container').highcharts('StockChart', {
+	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
 
+	// Create the chart
+	$('#container').highcharts('StockChart', {
 
-            rangeSelector : {
-                selected : 1
-            },
+		rangeSelector : {
+			selected : 1
+		},
 
-            title : {
-                text : 'AAPL Stock Price'
-            },
+		title : {
+			text : 'AAPL Stock Price'
+		},
 
-            series : [{
-                name : 'AAPL',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
-    });
-
+		series : [{
+			name : 'AAPL',
+			data : data,
+			tooltip: {
+				valueDecimals: 2
+			}
+		}]
+	});
 });
 
 /*
@@ -37,26 +31,26 @@ $(document).ready(function () {
 		var results = JSON.stringify(xhttp.responseText);
 		console.log(results)
 		//$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-        // Create the chart
-	        $('#demo').highcharts('StockChart', {
+		// Create the chart
+			$('#demo').highcharts('StockChart', {
 
-	            rangeSelector : {
-	                selected : 1
-	            },
+				rangeSelector : {
+					selected : 1
+				},
 
-	            title : {
-	                text : 'AI Account Value'
-	            },
+				title : {
+					text : 'AI Account Value'
+				},
 
-	            series : [{
-	                name : 'Value',
-	                data : results,
-	                tooltip: {
-	                    valueDecimals: 2
-	                }
-	            }]
-	        });
-	    //});
+				series : [{
+					name : 'Value',
+					data : results,
+					tooltip: {
+						valueDecimals: 2
+					}
+				}]
+			});
+		//});
 		}
 	};
 	xhttp.open("GET", "https://raw.githubusercontent.com/Ronin11/AI/master/data/data.txt", true);
