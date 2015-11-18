@@ -14,27 +14,31 @@ function loadDemo() {
 $(document).ready(function () {
 		loadDemo();
 		console.log(results);
-		myArray = $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?')['response.JSON'];
-		console.log(myArray);
-		// Create the chart
-		$('#demo').highcharts('StockChart', {
+		myArray = $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?');//['response.JSON']
 
-		rangeSelector : {
-			selected : 1
-		},
+		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+        // Create the chart
+        $('#demo').highcharts('StockChart', {
 
-		title : {
-			text : 'AI Account Value'
-		},
 
-		series : [{
-			name : 'Value',
-			data : myArray,
-			tooltip: {
-				valueDecimals: 2
-			}
-		}]
-	});
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : 'AI Account Value'
+            },
+
+            series : [{
+                name : 'Value',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+    });
+
 });
 
 
