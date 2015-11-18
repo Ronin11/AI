@@ -3,6 +3,7 @@ $(document).ready(function () {
 	//data = JSON.parse($.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json').recievedtext);
 	$.get("https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?", function(data){
   		console.log("callback");
+  		console.log(data);
   		console.log(JSON.parse(data));
 	});
 	data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
