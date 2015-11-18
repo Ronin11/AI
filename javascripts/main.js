@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     //$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-    $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json?callback=?', function (data) {
+    data = $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json');
+    console.log(data);
+    $.getJSON('https://raw.githubusercontent.com/Ronin11/AI/master/data/data.json', function (data) {
         console.log(data);
         // Create the chart
         $('#container').highcharts('StockChart', {
