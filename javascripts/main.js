@@ -14,6 +14,7 @@ function loadDemo() {
 $(document).ready(function () {
 		loadDemo();
 		console.log(results);
+		console.log($.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?'))
 		// Create the chart
 		$('#demo').highcharts('StockChart', {
 
