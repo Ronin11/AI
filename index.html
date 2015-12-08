@@ -41,30 +41,45 @@
 </p>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Design</h3>
+<a id="design" class="anchor" href="#design" aria-hidden="true"><span class="octicon octicon-link"></span></a>Design</h3>
 
 <p>
-  I've planned to build an intricate system that will hopefully make money in the stock market. The components of this system will look as follows:<br>
+  The trading system has the follwing components:<br>
   <ul>
     <li>Change Predictors</li>
     <li>Trade Indicator</li>
     <li>Trader</li>
   </ul>
-  The Change Predictors will try to predict the next interval price(on whatever interval proves to be the most effecient in trading.) I will use N of these all of different ensemble machine learning methods(neural net, random forests, etc). These outputs will be given to the Trade Tndicator. The Trade Indicator will then output a value of -1 to 1. These values will indicate that a stock will increase or decrease(hopefully). The Trade Indicator will be using a neural net for prediction, and a reinforcement learning algorithm to try and fine tune the output value.<br>
+  The Change Predictors tries to predict the next interval price(on whatever interval proves to be the most effecient in trading.) I only have 2 of these, one based on random forests, and another based on neural nets. The outputs of the predictors are given to the Trade Tndicator. The Trade Indicator then outputs a value of -1 to 1. These values indicate that a stock will increase or decrease(with some degree of accuracy). The trade indicator simply averages predictor values and sends it to the trader.<br>
   </p>
   <img src="images/AI.png" alt="AI Diagram">
   <p>
-  The Trader will take the output from the Trade Indicator, and sort the data by what it thinks will have the biggest change. For example if it thinks a stock will drop 50% it will appear above a stock it thinks will increase 40%. It will then take N stocks from the top of this list, and then trade on them. Buying the stocks that will increase, and shorting the ones that will decrease. This will be another neural net, with reinforcement. This reinforcement is soley on the returns of its trades. Positive for making money, negative for losing money. In theory, this system should end up trading the stocks it's good at predicting. For example if the Trade Indicator just sucks at predicting one stock, or stocks in a sector, the Trader should eventualy just stop trading those stocks.<br>
+  The Trader takes the output from the Trade Indicator, 
+  and trades a couple of hardcoded penny stocks.<br>
 
   Obviously this system is only taking into account the market fluctuations and speculations. This does not take into account news or other outside sources. Theoretically it should be able to see these reactions and predict their outcomes reasonably quickly, hopefully reducing the amount of risk these events produce.
 </p>
 
 <h3>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<p>
+  The Change Predictors are retrained every on every interval with a specific window of back data. At the moment the window is hard coded to 20 intervals. This seems to work best with most of the small cap stocks. If I had more time, I would have a climbing algorithm to determine the best window size for each stock.
+  <br>
+  The Trade Indicator simply averages the output of the change predictors, if I had more time the trade indicator would have had a method of machine learning to try get more accurate data sent to the trader.
+  <br>
+  The Trader is very aggressive and risky currently, it will trade as much as it can each interval and it will sell it at the beginning of the next interval.
+</p>
+
+<h3>
 <a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h3>
 
-<br>
-<div id="demo" style="width:100%; height:400px;"></div>
-<br>
+<p>
+  <br>
+  <div id="demo" style="width:100%; height:400px;"></div>
+  <br>
+  This was a result of one of the better runs. In general this seemed to make money, but other times it would lose everything. The risky nature of penny stocks, and the riskier investment strategy implemented in the Trader was completely designed to behave this way. I win more than I lose for the most part. But this system is cheating a little bit, because it doesn't pay for trades, it assumes that each trade is free. If Robin Hood opens an API to programatically make trades I'll hook it up and see what happens. But I don't think I have the start up capital to make the normal trade costs insignificant.
+</p>
 
 <h3>
 <a id="why-penny-stocks" class="anchor" href="#why-penny-stocks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why Penny Stocks?</h3>
