@@ -30,9 +30,13 @@ class neuralNetworkChangePredictor(changePredictor):
 		for index in range(0, len(tempArr)-1):
 			dataset.addSample(tuple(tempArr[index]), tempArr[index+1][0])
 		trainer = BackpropTrainer(net, dataset)
+		trainer.trainEpochs(50)
 		prediction = net.activate(tuple(currentData))
 		
 		self.data.append(currentData)
+		prediction = prediction[0]
+		if prediction != 0: 
+			prediction = (currentData[0]/prediction)-1
 		return prediction
 
 class randomForestChangePredictor(changePredictor):

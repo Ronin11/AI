@@ -5,11 +5,15 @@ class TradeIndicator:
 		self.size = 0
 		self.experts = [changePredictors.randomForestChangePredictor(),
 						changePredictors.neuralNetworkChangePredictor()]
-
+		
 	def indicate(self, arr):
 		self.size += 1
-		#return self.experts[0].predict(arr)
-		return self.experts[1].predict(arr)
+		vals = []
+		for i in range(0, len(self.experts)):
+			vals.append(self.experts[i].predict(arr))
+			if vals[i] is None:
+				return None 
+		return reduce(lambda x, y: x + y, vals) / len(vals)
 
 	def readyToTrade(self):
 		if self.size > 100:
