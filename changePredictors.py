@@ -30,7 +30,7 @@ class neuralNetworkChangePredictor(changePredictor):
 		for index in range(0, len(tempArr)-1):
 			dataset.addSample(tuple(tempArr[index]), tempArr[index+1][0])
 		trainer = BackpropTrainer(net, dataset)
-		trainer.trainEpochs(50)
+		trainer.trainEpochs(5000)
 		prediction = net.activate(tuple(currentData))
 		
 		self.data.append(currentData)
