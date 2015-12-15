@@ -8,8 +8,8 @@ class TradeIndicator:
 
 	def indicate(self, arr):
 		self.size += 1
-		return self.experts[0].predict(arr)
-		#return self.experts[1].predict([args])
+		#return self.experts[0].predict(arr)
+		return self.experts[1].predict(arr)
 
 	def readyToTrade(self):
 		if self.size > 100:
@@ -20,6 +20,6 @@ class TradeIndicator:
 if __name__ == '__main__':
 	print "tradeIndicator Test"
 	test = TradeIndicator()
-	for x in range(10):
+	for x in range(100):
 		print "Test: " + str(test.indicate([x*2, x]))
 		#test.indicate([x*2, x, x+2])

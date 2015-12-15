@@ -15,18 +15,24 @@ class changePredictor:
 
 class neuralNetworkChangePredictor(changePredictor):
 	def __init__(self):
-		self.net = buildNetwork(2,3,1)
 		self.data = dataStructure()
 		self.prevValue = 0;
 
 	def predict(self, currentData):
-		dataset = SupervisedDataSet(len(list(currentData[0])), 1)
-		for point in self.data.toArray():
-			dataset.addSample(point)
-		trainer = BackpropTrainer(self.net, dataset)
-		prediction = self.net.activate(list(currentData[0]))
+		if len(self.data.toArray()) < window:
+			self.data.append(currentData)
+			return
+
+		net = buildNetwork(len(currentData),3,1)
+		dataset = SupervisedDataSet(len(currentData), 1)
+
+		tempArr = self.data.toArray()[self.data.size()-window:self.data.size()]
+		for index in range(0, len(tempArr)-1):
+			dataset.addSample(tuple(tempArr[index]), tempArr[index+1][0])
+		trainer = BackpropTrainer(net, dataset)
+		prediction = net.activate(tuple(currentData))
 		
-		self.data.append(list(currentData[0]))
+		self.data.append(currentData)
 		return prediction
 
 class randomForestChangePredictor(changePredictor):
@@ -37,7 +43,7 @@ class randomForestChangePredictor(changePredictor):
 		#self.prevPrediction = 0;
 
 	def predict(self, currentData):
-		if not self.data.toArray():
+		if len(self.data.toArray()) < window:
 			self.data.append(currentData)
 			return
 		trainAll = []
